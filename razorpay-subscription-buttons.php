@@ -154,6 +154,7 @@ if (!class_exists('RZP_Subscription_Button_Elementor_Loader'))
 	}
 
 }
+
 		
 /**
 * Instantiate the loader class.

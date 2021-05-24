@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Razorpay Subscription Button Elementor
  * Plugin URI:  https://github.com/razorpay/subscription-button-elementor-plugin
@@ -35,7 +36,7 @@ function bootstrap_scripts_enqueue_sub_elementor()
 }
 
 /**
- * This is the RZP Payment button loader class.
+ * This is the RZP Subscription button loader class.
  *
  * @package RZP WP List Table
  */
@@ -43,9 +44,9 @@ if (!class_exists('RZP_Subscription_Button_Elementor_Loader'))
 {
 
 	// Adding constants
-    if (!defined('RZP_SUB_BASE_NAME'))
+    if (!defined('RZP_SUBSCRIPTION_ELEMENTOR_BASE_NAME'))
     {
-        define('RZP_SUB_BASE_NAME', plugin_basename(__FILE__));
+        define('RZP_SUBSCRIPTION_ELEMENTOR_BASE_NAME', plugin_basename(__FILE__));
         
     }
 
@@ -63,7 +64,7 @@ if (!class_exists('RZP_Subscription_Button_Elementor_Loader'))
 		{
 			add_action('admin_menu', array( $this, 'rzp_add_sub_plugin_page'));
 
-			add_filter('plugin_action_links_' . RZP_SUB_BASE_NAME, array($this, 'razorpay_sub_plugin_links'));
+			add_filter('plugin_action_links_' . RZP_SUBSCRIPTION_ELEMENTOR_BASE_NAME, array($this, 'razorpay_sub_plugin_links'));
 
             $this->settings = new RZP_Subscription_Button_Elementor_Setting();
            
@@ -76,7 +77,7 @@ if (!class_exists('RZP_Subscription_Button_Elementor_Loader'))
         public function rzp_add_sub_plugin_page()
         {
             /* add pages & menu items */
-            add_menu_page( esc_attr__( 'Razorpay Payment Button', 'textdomain' ), esc_html__( 'Razorpay Subscription Buttons Elementor', 'textdomain' ),
+            add_menu_page( esc_attr__( 'Razorpay Subscription Button', 'textdomain' ), esc_html__( 'Razorpay Subscription Buttons Elementor', 'textdomain' ),
             'administrator','razorpay_subs_button_elementor',array( $this, 'rzp_view_sub_buttons_page' ), '', 10);
 
             add_submenu_page( esc_attr__( 'razorpay_subs_button_elementor', 'textdomain' ), esc_html__( 'Razorpay Settings', 'textdomain' ),
@@ -102,7 +103,7 @@ if (!class_exists('RZP_Subscription_Button_Elementor_Loader'))
             }
 
             wp_die('<div class="error notice">
-                        <p>RAZORPAY ERROR: Payment button fetch failed.</p>
+                        <p>RAZORPAY ERROR: Subscription button fetch failed.</p>
                      </div>'); 
         } 
 
@@ -124,13 +125,13 @@ if (!class_exists('RZP_Subscription_Button_Elementor_Loader'))
         }
 	
 		/**
-		 * Razorpay Payment Button Page
+		 * Razorpay Subscription Button Page
 		 */
 		public function rzp_view_sub_buttons_page()
 		{
-			$rzp_payment_buttons = new RZP_Subscription_Buttons_Elementor();
+			$rzp_subscription_buttons = new RZP_Subscription_Buttons_Elementor();
 
-			$rzp_payment_buttons->rzp_buttons(); 
+			$rzp_subscription_buttons->rzp_buttons(); 
 		}	
 
         /**

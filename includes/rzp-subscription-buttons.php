@@ -38,7 +38,7 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
 		echo '<form method="post">
             <input type="hidden" name="page" value="">';
 		
-        $this->search_box( 'search', 'search_id' );
+        //$this->search_box( 'search', 'search_id' );
 		$this->display();  
 		
         echo '</form></div>
@@ -136,8 +136,12 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
 
     function column_title($item) 
     {
+        
+        $paged = isset(($_REQUEST['paged'])) ? $_REQUEST['paged']:1;
+       
+        
         $actions = array(
-            'view'      => sprintf('<a href="?page=%s&btn=%s">View</a>','rzp_button_view_sub_elementor', $item['id']),
+            'view'      => sprintf('<a href="?page=%s&btn=%s&paged=%s">View</a>','rzp_button_view_sub_elementor', $item['id'],$paged ),
         );
 
         return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions, $always_visible = true ) );
@@ -149,9 +153,9 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
     function prepare_items() 
     {
 
-        $per_page = 2;
+        $per_page = 10;
         $current_page = $this->get_pagenum();
-
+        
         if (1 < $current_page) 
         {
         	$offset = $per_page * ( $current_page - 1 );
@@ -164,15 +168,26 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
         //Retrieve $customvar for use in query to get items.
         $customvar = ( isset(($_REQUEST['status'])) ? sanitize_text_field($_REQUEST['status']) : '');
 
-        $payment_pages = $this->get_items($customvar, $per_page);
+        $payment_page = $this->get_items($customvar, $per_page);
+        
+        $count = count($payment_page);
+        for($i=0;$i<$count;$i++){
+            
+            if($i >= $offset && $i < $offset+$per_page){
+                $payment_pages[]=$payment_page[$i];
+            }
 
+            
+            
+        }
         $columns = $this->get_columns();
         $hidden = array();
         $sortable = $this->get_sortable_columns();
         $this->_column_headers = array($columns, $hidden, $sortable);	
         usort( $payment_pages, array( &$this, 'usort_reorder' ) );
 
-        $count = count($payment_pages);
+        
+        
         $this->items = $payment_pages;
 
         // Set the pagination
@@ -193,7 +208,7 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
 
         try
         {
-            $buttons = $api->paymentPage->all(['view_type' => 'subscription_button', "status" => $status]);
+            $buttons = $api->paymentPage->all(['view_type' => 'subscription_button', "status" => $status, 'count' => 100]);
         }
         catch (Exception $e)
         {
@@ -205,12 +220,14 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
         }
         if ($buttons) 
         {
+           $button_count=0;
             foreach ($buttons['items'] as $button) 
             {
+              
               $items[] = array(
                 'id' => $button['id'],
                 'title' => $button['title'],
-                'total_sales' => '<span class="rzp-currency">₹</span> '.(int) round($button['total_amount_paid'] / 100),
+                'total_sales' => $button['payment_page_items'][0]['quantity_sold'],
                 'created_at' => date("d F Y H:i A", $button['created_at']),
                 'status' => $button['status'],
               );

@@ -22,7 +22,8 @@ class RZP_Subs_Button_Action_Elementor
     {
         $btn_id = sanitize_text_field($_POST['btn_id']);
         $action = sanitize_text_field($_POST['btn_action']);
-        $page_url = admin_url( 'admin.php?page=rzp_button_view_sub_elementor&btn='.$btn_id );
+        $paged = sanitize_text_field($_POST['paged']);
+        $page_url = admin_url( 'admin.php?page=rzp_button_view_sub_elementor&btn='.$btn_id .'&paged='.$paged);
 
         try
         {

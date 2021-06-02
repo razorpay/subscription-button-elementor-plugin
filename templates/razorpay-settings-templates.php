@@ -9,7 +9,7 @@ class RZP_Subscription_Button_Elementor_Templates
     {
         echo
             '<div class="wrap">
-                <h2>Razorpay Subscription Buttons Setting</h2>
+                <h2>Razorpay Subscription Button Settings</h2>
                 <form action="options.php" method="POST">';
 
                     settings_fields('razorpay_fields');

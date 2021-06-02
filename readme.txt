@@ -1,7 +1,7 @@
 === Razorpay Subscription Button Elementor Plugin ===
 Contributors: razorpay
 Tags: razorpay, payments, subscription, india, ecommerce
-Tested up to: 5.7.1
+Tested up to: 5.7.2
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -41,7 +41,7 @@ These are the features that you will get without any premium paywalls
 
 = 1.0 =
 * Initial Changes
-* Tested upto WordPress 5.7.1 
+* Tested upto WordPress 5.7.2 
 
 == Frequently Asked Questions ==
 

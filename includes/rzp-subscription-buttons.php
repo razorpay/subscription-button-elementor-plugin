@@ -137,7 +137,8 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
     function column_title($item) 
     {
         
-        $paged = isset(($_REQUEST['paged'])) ? $_REQUEST['paged']:1;
+        $paged = (isset(($_REQUEST['paged'])) ? sanitize_text_field($_REQUEST['paged']):1);
+        
        
         
         $actions = array(

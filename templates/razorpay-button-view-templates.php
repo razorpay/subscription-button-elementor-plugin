@@ -27,7 +27,7 @@ class RZP_View_Subs_Button_Elementor_Templates
         {
             wp_die("This page consist some request parameters to view response");
         }
-        $pagenum=$_REQUEST['paged'];
+        $pagenum = sanitize_text_field($_REQUEST['paged']);
         $previous_page_url = admin_url('admin.php?page=razorpay_subs_button_elementor&paged='.$pagenum);
         $button_detail = $this->fetch_button_detail(sanitize_text_field($_REQUEST['btn']));
         
@@ -76,7 +76,7 @@ class RZP_View_Subs_Button_Elementor_Templates
                   
         </div>';
 
-        $modal = '<div class="overlay"><div class="modal">
+        echo '<div class="overlay"><div class="modal">
   <form class="modal-content" action="'.esc_url( admin_url('admin-post.php') ).'" method="POST">
     <div class="container">
         <div class="modal-header">
@@ -107,7 +107,7 @@ class RZP_View_Subs_Button_Elementor_Templates
     });
 </script>
 ';
-echo $modal;
+
     }
 
     public function fetch_button_detail($btn_id) 

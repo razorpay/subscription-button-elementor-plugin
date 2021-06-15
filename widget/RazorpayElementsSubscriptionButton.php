@@ -168,7 +168,26 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 			?>
 			
 			<form>
+			<?php
+	/**
+	 * Adding script to render button 
+	 * based on supported version of Wordpress
+	 */	
+		global $wp_version;
+			if($wp_version >= 5.7){
+				wp_print_script_tag(
+				array(
+					"src" => "https://cdn.razorpay.com/static/widget/subscription-button.js",
+					"data-plugin " => ($dataPlugin),
+					"data-subscription_button_id" => ( ! empty( $settings["select_button"] ) ? $settings["select_button"] : " ")
+					),
+                );
+			}else{
+			?>
 				<script src="https://cdn.razorpay.com/static/widget/subscription-button.js" data-plugin="<?php esc_attr_e($dataPlugin) ?>" data-subscription_button_id="<?php esc_attr_e( ! empty( $settings['select_button'] ) ? $settings['select_button'] : '' ); ?>"> </script>
+			<?php
+			}
+			?>
 			</form>
 			<?php
 		}

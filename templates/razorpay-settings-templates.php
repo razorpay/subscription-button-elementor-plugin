@@ -65,7 +65,7 @@ class RZP_Subscription_Button_Elementor_Templates
     function displayEnabled()
     {
         $default = get_option('enabled_field');
-        echo '<input type="checkbox" name="enabled_field" id="enable" value="'.$default.'" checked/>
+        echo '<input type="checkbox" name="enabled_field" id="enable" value="'.esc_html($default).'" checked/>
         <label for ="enable">Enable Razorpay Payment Button Module.</label>
         ';
 
@@ -78,7 +78,7 @@ class RZP_Subscription_Button_Elementor_Templates
     {
         $default = get_option('title_field', "Credit Card/Debit Card/NetBanking");
 
-        echo '<input type="text" name="title_field" id="title" size="35" value="'.$default.'" /><br>
+        echo '<input type="text" name="title_field" id="title" size="35" value="'.esc_html($default).'" /><br>
         <label for ="title">This controls the title which the user sees during checkout.</label>
         ';
 
@@ -91,7 +91,7 @@ class RZP_Subscription_Button_Elementor_Templates
     {
         $default = get_option('description_field', "Pay securely by Credit or Debit card or internet banking through Razorpay");
 
-        echo '<input type="text" name="description_field" id="description" size="35" value="'.$default.'" /><br>
+        echo '<input type="text" name="description_field" id="description" size="35" value="'.esc_html($default).'" /><br>
         <label for ="description">This controls the display which the user sees during checkout.</label>
         ';
 
@@ -104,7 +104,7 @@ class RZP_Subscription_Button_Elementor_Templates
     {
         $default = get_option('key_id_field');
 
-        echo '<input type="text" name="key_id_field" id="key_id" size="35" value="'.$default.'" /><br>
+        echo '<input type="text" name="key_id_field" id="key_id" size="35" value="'.esc_html($default).'" /><br>
         <label for ="key_id">The key Id and key secret can be generated from "API Keys" section of Razorpay Dashboard. Use test or live for test or live mode.</label>
         ';
 
@@ -118,7 +118,7 @@ class RZP_Subscription_Button_Elementor_Templates
     {
         $default = get_option('key_secret_field');
 
-        echo '<input type="text" name="key_secret_field" id="key_secret" size="35" value="'.$default.'" /><br>
+        echo '<input type="text" name="key_secret_field" id="key_secret" size="35" value="'.esc_html($default).'" /><br>
         <label for ="key_id">The key Id and key secret can be generated from "API Keys" section of Razorpay Dashboard. Use test or live for test or live mode.</label>
         ';
 
@@ -135,7 +135,7 @@ class RZP_Subscription_Button_Elementor_Templates
         $selected_authorize = ($default == 'authorize') ? 'selected' : '' ;
 
         echo '
-        <select name="payment_action_field" id="payment_action" value="'.$default.'" />
+        <select name="payment_action_field" id="payment_action" value="'.esc_html($default).'" />
         <option value="capture" '.$selected_capture.'>Authorize and Capture</option>
         <option value="authorize" '.$selected_authorize.'>Authorize</option>
         </select>

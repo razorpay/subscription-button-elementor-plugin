@@ -1,6 +1,7 @@
 === Razorpay Subscription Button Elementor Plugin ===
 Contributors: razorpay
 Tags: razorpay, payments, subscription, india, ecommerce
+Requires at least: 5.7
 Tested up to: 5.7.2
 Stable tag: 1.0
 License: GPLv2 or later
@@ -36,6 +37,11 @@ These are the features that you will get without any premium paywalls
 6. Scroll down to general categaory,drag and drop widgets from the left panel onto the content area, 
    as well as add new  sections and columns that make up the page structure
 7. Choose Subscription Button using the drop down button.
+
+== Dependencies ==
+
+1. Wordpress v5.7 and later
+
 
 == Changelog ==
 

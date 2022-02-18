@@ -3,7 +3,7 @@
  * Plugin Name: Razorpay Subscription Button Elementor
  * Plugin URI:  https://github.com/razorpay/subscription-button-elementor-plugin
  * Description: Razorpay Subscription Button Elementor
- * Version:     1.0
+ * Version:     1.0.1
  * Author:      Razorpay
  * Author URI:  https://razorpay.com
  */

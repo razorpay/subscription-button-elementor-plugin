@@ -114,7 +114,7 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 
         try
         {
-            $items = $api->paymentPage->all(['view_type' => 'subscription_button', "status" => 'active']);
+            $items = $api->paymentPage->all(['view_type' => 'subscription_button', "status" => 'active', 'count' => 100]);
         }
         catch (\Exception $e)
         {
@@ -164,11 +164,20 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 			
 			$mod_version = get_plugin_data(plugin_dir_path(__DIR__) . 'razorpay-subscription-buttons.php')['Version'];
 
-			$dataPlugin = "wordpress-subscription-elementor-".$mod_version;
+			$dataPlugin = "wordpress-subscription-button-elementor-".$mod_version;
 			?>
 			
 			<form>
-				<script src="https://cdn.razorpay.com/static/widget/subscription-button.js" data-plugin="<?php esc_attr_e($dataPlugin) ?>" data-subscription_button_id="<?php esc_attr_e( ! empty( $settings['select_button'] ) ? $settings['select_button'] : '' ); ?>"> </script>
+			<?php
+			
+				wp_print_script_tag(
+				array(
+					"src" => "https://cdn.razorpay.com/static/widget/subscription-button.js",
+					"data-plugin " => $dataPlugin,
+					"data-subscription_button_id" => ( ! empty( $settings["select_button"] ) ? $settings["select_button"] : " ")
+					),
+                );
+			?>
 			</form>
 			<?php
 		}

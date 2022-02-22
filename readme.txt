@@ -37,6 +37,11 @@ These are the features that you will get without any premium paywalls
    as well as add new  sections and columns that make up the page structure
 7. Choose Subscription Button using the drop down button.
 
+== Dependencies ==
+
+1. Wordpress v5.7 and later
+
+
 == Changelog ==
 
 = 1.0.1 =
@@ -45,7 +50,7 @@ These are the features that you will get without any premium paywalls
 
 = 1.0 =
 * Initial Changes
-* Tested upto WordPress 5.7.1 
+* Tested upto WordPress 5.7.2 
 
 == Frequently Asked Questions ==
 

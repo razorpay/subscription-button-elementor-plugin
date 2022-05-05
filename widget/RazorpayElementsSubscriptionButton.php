@@ -78,11 +78,11 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
 	 *
-	 * @since 1.1.0
+	 * @since 3.1.0
 	 *
 	 * @access protected
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 
 		$this->start_controls_section(
 			'razorpay_subs_button',
@@ -175,7 +175,7 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 					"src" => "https://cdn.razorpay.com/static/widget/subscription-button.js",
 					"data-plugin " => $dataPlugin,
 					"data-subscription_button_id" => ( ! empty( $settings["select_button"] ) ? $settings["select_button"] : " ")
-					),
+					)
                 );
 			?>
 			</form>
@@ -188,11 +188,11 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 	 *
 	 * Written as a Backbone JavaScript template and used to generate the live preview.
 	 *
-	 * @since 1.1.0
+	 * @since 2.9.0
 	 *
 	 * @access protected
 	 */
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 			<# if ( settings.select_button === 'select') { #>
 				<div class="elementor-counter-title">Please select subscription button.</div>

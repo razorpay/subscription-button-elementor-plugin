@@ -23,8 +23,11 @@ use Razorpay\Api\Errors;
 add_action('admin_enqueue_scripts', 'bootstrap_scripts_enqueue_sub_elementor', 0);
 add_action('admin_post_rzp_subs_btn_elementor_action', 'razorpay_subscription_button_elementor_action', 0);
 
-function bootstrap_scripts_enqueue_sub_elementor() 
+function bootstrap_scripts_enqueue_sub_elementor($admin_page) 
 {
+    if ($admin_page != 'admin_page_rzp_button_view_sub_elementor') {
+        return;
+    }
     wp_register_style('bootstrap-css-sub-elementor', plugin_dir_url(__FILE__)  . 'public/css/bootstrap.min.css',
                 null, null);
     wp_register_style('button-css-sub-elementor', plugin_dir_url(__FILE__)  . 'public/css/button.css',

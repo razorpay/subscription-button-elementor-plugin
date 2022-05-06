@@ -123,8 +123,8 @@ class RZP_Subscription_Button_Elementor_Templates
     {
         $default = get_option('payment_action_field');
 
-        $selected_capture = ($default == 'capture') ? 'selected' : '' ;
-        $selected_authorize = ($default == 'authorize') ? 'selected' : '' ;
+        $selected_capture = ($default === 'capture') ? 'selected' : '' ;
+        $selected_authorize = ($default === 'authorize') ? 'selected' : '' ;
 
         echo '
         <select name="payment_action_field" id="payment_action" value="'.esc_html($default).'" />

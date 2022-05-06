@@ -96,7 +96,7 @@ if (!class_exists('RZP_Subscription_Button_Elementor_Loader'))
 
             $secret = get_option('key_secret_field');
 
-            if(empty($key) === false && empty($secret) === false)
+            if(empty($key) === false and empty($secret) === false)
             {
                 return new Api($key, $secret);
             }

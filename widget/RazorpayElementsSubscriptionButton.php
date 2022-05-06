@@ -74,7 +74,7 @@ class RazorpayElementsSubscriptionButton extends Widget_Base
      */
     public function get_categories()
     {
-        return array( 'general' );
+        return array('general');
     }
 
     /**
@@ -91,14 +91,14 @@ class RazorpayElementsSubscriptionButton extends Widget_Base
         $this->start_controls_section(
             'razorpay_subs_button',
             array(
-                'label' => __( 'Razorpay Subscription Button', 'subscription-for-elementor' )
+                'label' => __('Razorpay Subscription Button', 'subscription-for-elementor')
             )
         );
 
         $this->add_control(
             'select_button',
             [
-                'label' => __( 'Select Button', 'plugin-domain' ),
+                'label' => __('Select Button', 'plugin-domain'),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'select',
                 'options' => $this->get_buttons(),
@@ -179,7 +179,7 @@ class RazorpayElementsSubscriptionButton extends Widget_Base
                 array(
                     "src" => "https://cdn.razorpay.com/static/widget/subscription-button.js",
                     "data-plugin " => $dataPlugin,
-                    "data-subscription_button_id" => (! empty( $settings["select_button"]) ? $settings["select_button"] : " ")
+                    "data-subscription_button_id" => (! empty($settings["select_button"]) ? $settings["select_button"] : " ")
                 )
             );
             ?>
@@ -200,7 +200,7 @@ class RazorpayElementsSubscriptionButton extends Widget_Base
     protected function content_template()
     {
         ?>
-        <# if ( settings.select_button === 'select') { #>
+        <# if (settings.select_button === 'select') { #>
             <div class="elementor-counter-title">Please select subscription button.</div>
         <# } else { #>
             <img src=" <?php echo plugin_dir_url(__FILE__).'../public/image/elementorSVG.svg';?>" alt="Razorpay" >

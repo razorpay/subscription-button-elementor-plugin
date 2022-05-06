@@ -39,8 +39,7 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table
         echo '<form method="post">
             <input type="hidden" name="page" value="">';
         
-        //$this->search_box( 'search', 'search_id' );
-        $this->display();  
+        $this->display();
         
         echo '</form></div>
             </div>';
@@ -70,11 +69,9 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table
             case 'total_sales':
             case 'created_at':
             case 'status':
-                return $item[ $column_name ];
-
+                return $item[$column_name];
             default:
-          
-            return print_r( $item, true ) ; //Show the whole array for troubleshooting purposes
+            return print_r($item, true) ; //Show the whole array for troubleshooting purposes
         }
     }		
         
@@ -117,6 +114,7 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table
             $order = (! empty(sanitize_text_field($_GET['order']))) ? sanitize_text_field($_GET['order']) : 'desc';
             // Determine sort order
             $result = strcmp($a[$orderby], $b[$orderby]);
+
             // Send final sort direction to usort
             return ($order === 'asc') ? $result : -$result;
         }
@@ -127,6 +125,7 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table
         $sortable_columns = array(
             'title'  => array('title',false),
         );
+
         return $sortable_columns;
     }
 
@@ -135,10 +134,10 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table
         $paged = (isset(($_REQUEST['paged'])) ? sanitize_text_field($_REQUEST['paged']):1);
 
         $actions = array(
-            'view'      => sprintf('<a href="?page=%s&btn=%s&paged=%s">View</a>','rzp_button_view_sub_elementor', $item['id'],$paged ),
+            'view'      => sprintf('<a href="?page=%s&btn=%s&paged=%s">View</a>','rzp_button_view_sub_elementor', $item['id'],$paged),
         );
 
-        return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions, $always_visible = true ) );
+        return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions, $always_visible = true));
     }
 
     /**
@@ -151,7 +150,7 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table
         
         if (1 < $current_page) 
         {
-            $offset = $per_page * ( $current_page - 1 );
+            $offset = $per_page * ($current_page - 1);
         } 
         else 
         {
@@ -169,14 +168,14 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table
         {
             if($i >= $offset && $i < $offset+$per_page)
             {
-                $payment_pages[]=$payment_page[$i];
+                $payment_pages[] = $payment_page[$i];
             }
         }
         $columns = $this->get_columns();
         $hidden = array();
         $sortable = $this->get_sortable_columns();
         $this->_column_headers = array($columns, $hidden, $sortable);	
-        usort( $payment_pages, array(&$this, 'usort_reorder'));
+        usort($payment_pages, array(&$this, 'usort_reorder'));
 
         $this->items = $payment_pages;
 
@@ -224,6 +223,7 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table
               );
             }
           }
+
         return $items;
     }
 }

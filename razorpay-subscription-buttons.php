@@ -53,7 +53,7 @@ if (!class_exists('RZP_Subscription_Button_Elementor_Loader'))
     if (!defined('RZP_REDIRECT_URL'))
     {
         // admin-post.php is a file that contains methods for us to process HTTP requests
-        define('RZP_REDIRECT_URL', esc_url( admin_url('admin-post.php')));
+        define('RZP_REDIRECT_URL', esc_url(admin_url('admin-post.php')));
     }
 
     class RZP_Subscription_Button_Elementor_Loader
@@ -63,7 +63,7 @@ if (!class_exists('RZP_Subscription_Button_Elementor_Loader'))
          */
         public function __construct()
         {
-            add_action('admin_menu', array( $this, 'rzp_add_sub_plugin_page'));
+            add_action('admin_menu', array($this, 'rzp_add_sub_plugin_page'));
 
             add_filter('plugin_action_links_' . RZP_SUBSCRIPTION_ELEMENTOR_BASE_NAME, array($this, 'razorpay_sub_plugin_links'));
 

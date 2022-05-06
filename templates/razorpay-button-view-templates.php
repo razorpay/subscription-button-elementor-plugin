@@ -17,10 +17,10 @@ class RZP_View_Subs_Button_Elementor_Templates
         $this->api = $this->razorpay->get_razorpay_api_instance();
     }
 
-	/**
+    /**
      * Generates admin page options using Settings API
     **/
-	function razorpay_view_button()
+    function razorpay_view_button()
     {
         if (empty(sanitize_text_field($_REQUEST['btn'])) || null == (sanitize_text_field($_REQUEST['btn'])))
         {

@@ -30,7 +30,7 @@ class RZP_Subscription_Button_Elementor_Setting
     {
         $this->template->razorpaySettings();
     }
-	/**
+    /**
      * Uses Settings API to create fields
     **/
     function displayOptions()

@@ -6,12 +6,13 @@ require_once __DIR__.'/../razorpay-sdk/Razorpay.php';
 use Razorpay\Api\Api;
 use Razorpay\Api\Errors;
 
-if( ! class_exists( 'WP_List_Table' ) ) {
-	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+if(! class_exists('WP_List_Table'))
+{
+	require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
 
-class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
-		
+class RZP_Subscription_Buttons_Elementor extends WP_List_Table
+{
     function __construct() 
     {
 		parent::__construct( 
@@ -50,7 +51,6 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
 	 */
 	function get_columns() 
     {
-
         $columns = array(
             'title'=>__('Title'),
             'total_sales'=>__('Total Sales'),
@@ -61,7 +61,7 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
 		return $columns;
 	}	
 
-	function column_default( $item, $column_name ) 
+	function column_default($item, $column_name)
     {
 		switch($column_name) 
         {
@@ -82,9 +82,9 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
     { 
         $current = 'all';
         
-        if(isset($_REQUEST['status']))
+        if (isset($_REQUEST['status']))
         {
-            $current = ( !empty(sanitize_text_field($_REQUEST['status'])) ? sanitize_text_field($_REQUEST['status']) : 'all');
+            $current = (!empty(sanitize_text_field($_REQUEST['status'])) ? sanitize_text_field($_REQUEST['status']) : 'all');
         }
 
         $views = array();
@@ -92,7 +92,7 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
         //All Buttons
         $class = ($current == 'all' ? ' class="current"' :'');
         $all_url = remove_query_arg('status');
-        $views['all'] = "<a href='{$all_url }' {$class} >All</a>";
+        $views['all'] = "<a href='{$all_url}' {$class} >All</a>";
 
         //Recovered link
         $foo_url = add_query_arg('status','active');
@@ -105,42 +105,35 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
         $views['disabled'] = "<a href='{$bar_url}' {$class} >Disabled</a>";
 
         return $views;
-                
 	}
-		
-		
-		
-    function usort_reorder( $a, $b ) 
+
+    function usort_reorder($a, $b)
     {
-        if(isset($_GET['orderby']) && isset($_GET['order']))
+        if (isset($_GET['orderby']) && isset($_GET['order']))
         {
             // If no sort, default to title
-            $orderby = ( ! empty(sanitize_text_field($_GET['orderby'])) ) ? sanitize_text_field($_GET['orderby']) : 'title';
+            $orderby = (! empty(sanitize_text_field($_GET['orderby']))) ? sanitize_text_field($_GET['orderby']) : 'title';
             // If no order, default to asc
-            $order = ( ! empty(sanitize_text_field($_GET['order'] ) ) ) ? sanitize_text_field($_GET['order']) : 'desc';
+            $order = (! empty(sanitize_text_field($_GET['order']))) ? sanitize_text_field($_GET['order']) : 'desc';
             // Determine sort order
-            $result = strcmp( $a[$orderby], $b[$orderby] );
+            $result = strcmp($a[$orderby], $b[$orderby]);
             // Send final sort direction to usort
-            return ( $order === 'asc' ) ? $result : -$result;
+            return ($order === 'asc') ? $result : -$result;
         }
-        
     }
 		
     function get_sortable_columns() 
     {
         $sortable_columns = array(
-        'title'  => array('title',false),
+            'title'  => array('title',false),
         );
         return $sortable_columns;
     }
 
     function column_title($item) 
     {
-        
         $paged = (isset(($_REQUEST['paged'])) ? sanitize_text_field($_REQUEST['paged']):1);
-        
-       
-        
+
         $actions = array(
             'view'      => sprintf('<a href="?page=%s&btn=%s&paged=%s">View</a>','rzp_button_view_sub_elementor', $item['id'],$paged ),
         );
@@ -153,7 +146,6 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
     */	
     function prepare_items() 
     {
-
         $per_page = 10;
         $current_page = $this->get_pagenum();
         
@@ -167,36 +159,35 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
         }
 
         //Retrieve $customvar for use in query to get items.
-        $customvar = ( isset(($_REQUEST['status'])) ? sanitize_text_field($_REQUEST['status']) : '');
+        $customvar = (isset(($_REQUEST['status'])) ? sanitize_text_field($_REQUEST['status']) : '');
 
         $payment_page = $this->get_items($customvar, $per_page);
-        
         $count = count($payment_page);
-        for($i=0;$i<$count;$i++){
-            
-            if($i >= $offset && $i < $offset+$per_page){
+        $payment_pages = array();
+
+        for($i=0;$i<$count;$i++)
+        {
+            if($i >= $offset && $i < $offset+$per_page)
+            {
                 $payment_pages[]=$payment_page[$i];
             }
-
-            
-            
         }
         $columns = $this->get_columns();
         $hidden = array();
         $sortable = $this->get_sortable_columns();
         $this->_column_headers = array($columns, $hidden, $sortable);	
-        usort( $payment_pages, array( &$this, 'usort_reorder' ) );
+        usort( $payment_pages, array(&$this, 'usort_reorder'));
 
-        
-        
         $this->items = $payment_pages;
 
         // Set the pagination
-        $this->set_pagination_args( array(
+        $this->set_pagination_args(
+            array(
         	'total_items' => $count,
         	'per_page'    => $per_page,
-        	'total_pages' => ceil( $count / $per_page )
-        ) );
+        	'total_pages' => ceil($count / $per_page)
+            )
+        );
     }
 
     function get_items($status, $count)
@@ -224,7 +215,6 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
            $button_count=0;
             foreach ($buttons['items'] as $button) 
             {
-              
               $items[] = array(
                 'id' => $button['id'],
                 'title' => $button['title'],
@@ -236,6 +226,4 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table {
           }
         return $items;
     }
-		
-
 }

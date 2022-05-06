@@ -6,7 +6,6 @@ class RZP_View_Subs_Button_Elementor
 {
     public function __construct()
     {
-
         $this->view_template = new RZP_View_Subs_Button_Elementor_Templates();
     }
 
@@ -17,5 +16,4 @@ class RZP_View_Subs_Button_Elementor
     {
         $this->view_template->razorpay_view_button();
     }
-
 }

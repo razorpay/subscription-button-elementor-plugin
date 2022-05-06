@@ -39,6 +39,6 @@ class RZP_Subs_Button_Action_Elementor
                 400
             );
         }
-        wp_redirect( $page_url );
+        wp_redirect($page_url);
     }
 }

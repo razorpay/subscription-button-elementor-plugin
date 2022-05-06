@@ -55,8 +55,6 @@ class RZP_Subscription_Button_Elementor_Templates
     function displayHeader()
     {
        echo '<p>Razorpay is an online payment gateway for India with transparent pricing, seamless integration and great support</p>';
-
-       
     }
 
     /**
@@ -68,7 +66,6 @@ class RZP_Subscription_Button_Elementor_Templates
         echo '<input type="checkbox" name="enabled_field" id="enable" value="'.esc_html($default).'" checked/>
         <label for ="enable">Enable Razorpay Payment Button Module.</label>
         ';
-
     }
 
     /**
@@ -81,7 +78,6 @@ class RZP_Subscription_Button_Elementor_Templates
         echo '<input type="text" name="title_field" id="title" size="35" value="'.esc_html($default).'" /><br>
         <label for ="title">This controls the title which the user sees during checkout.</label>
         ';
-
     }
 
     /**
@@ -94,7 +90,6 @@ class RZP_Subscription_Button_Elementor_Templates
         echo '<input type="text" name="description_field" id="description" size="35" value="'.esc_html($default).'" /><br>
         <label for ="description">This controls the display which the user sees during checkout.</label>
         ';
-
     }
 
     /**
@@ -107,8 +102,6 @@ class RZP_Subscription_Button_Elementor_Templates
         echo '<input type="text" name="key_id_field" id="key_id" size="35" value="'.esc_html($default).'" /><br>
         <label for ="key_id">The key Id and key secret can be generated from "API Keys" section of Razorpay Dashboard. Use test or live for test or live mode.</label>
         ';
-
-       
     }
 
     /**
@@ -121,7 +114,6 @@ class RZP_Subscription_Button_Elementor_Templates
         echo '<input type="text" name="key_secret_field" id="key_secret" size="35" value="'.esc_html($default).'" /><br>
         <label for ="key_id">The key Id and key secret can be generated from "API Keys" section of Razorpay Dashboard. Use test or live for test or live mode.</label>
         ';
-
     }
 
     /**
@@ -140,8 +132,7 @@ class RZP_Subscription_Button_Elementor_Templates
         <option value="authorize" '.$selected_authorize.'>Authorize</option>
         </select>
         <br>
-        <label for ="payment_action">Payment action when order is compelete.</label>
-';
+        <label for ="payment_action">Payment action when order is compelete.</label>';
 
     }
 

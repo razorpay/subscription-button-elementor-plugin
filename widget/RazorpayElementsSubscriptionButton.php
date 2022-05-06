@@ -9,13 +9,13 @@ require_once __DIR__.'/../razorpay-sdk/Razorpay.php';
 use Razorpay\Api\Api;
 use Razorpay\Api\Errors;
  
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
 /**
  * @since 1.1.0
  */
-class RazorpayElementsSubscriptionButton extends Widget_Base {
-
+class RazorpayElementsSubscriptionButton extends Widget_Base
+{
 	/**
 	 * Retrieve the widget name.
 	 *
@@ -25,7 +25,8 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 	 *
 	 * @return string Widget name.
 	 */
-	public function get_name() {
+	public function get_name()
+    {
 		return 'razorpay_subs_button';
 	}
 
@@ -38,8 +39,9 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 	 *
 	 * @return string Widget title.
 	 */
-	public function get_title() {
-		return __( 'Razorpay Subscription Button', 'subscription-for-elementor' );
+	public function get_title()
+    {
+		return __('Razorpay Subscription Button', 'subscription-for-elementor');
 	}
 
 	/**
@@ -51,7 +53,8 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_icon() {
+	public function get_icon()
+    {
 		return 'fa fa-credit-card-alt';
 	}
 
@@ -69,7 +72,8 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 	 *
 	 * @return array Widget categories.
 	 */
-	public function get_categories() {
+	public function get_categories()
+    {
 		return array( 'general' );
 	}
 
@@ -82,8 +86,8 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 	 *
 	 * @access protected
 	 */
-	protected function register_controls() {
-
+	protected function register_controls()
+    {
 		$this->start_controls_section(
 			'razorpay_subs_button',
 			array(
@@ -138,7 +142,6 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
         return $buttons;
     }
 
-
 	/**
 	 * Render the widget output on the frontend.
 	 *
@@ -148,15 +151,15 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 	 *
 	 * @access protected
 	 */
-	protected function render() {
-
+	protected function render()
+    {
 		if ( \Elementor\Plugin::instance()->editor->is_edit_mode()){
 			return;
 		}
 		
 		$settings = $this->get_settings_for_display();
 				
-		if(isset($settings['select_button']) === true)
+		if (isset($settings['select_button']) === true)
 		{
 			if (! function_exists('get_plugin_data')) {
                		 require_once(ABSPATH . 'wp-admin/includes/plugin.php');
@@ -171,11 +174,11 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 			<?php
 			
 				wp_print_script_tag(
-				array(
-					"src" => "https://cdn.razorpay.com/static/widget/subscription-button.js",
-					"data-plugin " => $dataPlugin,
-					"data-subscription_button_id" => ( ! empty( $settings["select_button"] ) ? $settings["select_button"] : " ")
-					)
+				        array(
+                            "src" => "https://cdn.razorpay.com/static/widget/subscription-button.js",
+                            "data-plugin " => $dataPlugin,
+                            "data-subscription_button_id" => (! empty( $settings["select_button"]) ? $settings["select_button"] : " ")
+                        )
                 );
 			?>
 			</form>
@@ -192,7 +195,8 @@ class RazorpayElementsSubscriptionButton extends Widget_Base {
 	 *
 	 * @access protected
 	 */
-	protected function content_template() {
+	protected function content_template()
+    {
 		?>
 			<# if ( settings.select_button === 'select') { #>
 				<div class="elementor-counter-title">Please select subscription button.</div>

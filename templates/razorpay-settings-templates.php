@@ -7,6 +7,8 @@ class RZP_Subscription_Button_Elementor_Templates
     **/
     function razorpaySettings()
     {
+        settings_errors();
+
         echo
             '<div class="wrap">
                 <h2>Razorpay Subscription Button Settings</h2>

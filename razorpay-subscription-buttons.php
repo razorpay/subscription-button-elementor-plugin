@@ -102,7 +102,7 @@ if (!class_exists('RZP_Subscription_Button_Elementor_Loader'))
             }
 
             wp_die('<div class="error notice">
-                        <p>RAZORPAY ERROR: Subscription button fetch failed.</p>
+                        <p>RAZORPAY ERROR: Please set Razorpay Key Id and Secret in plugin settings.</p>
                      </div>'); 
         } 
 

@@ -144,8 +144,8 @@ class RZP_View_Subs_Button_Elementor_Templates
                             <div class="row">
                                 <div class="col-sm-3">'.$payment_item['item']['name'].'</div>
                                 <div class="col-sm-3">Plan Amount</div>
-                                <div class="col-sm-3">Billing Frequency<</div>
-                                <div class="col-sm-3">Billing Cycles<</div>
+                                <div class="col-sm-3">Billing Frequency</div>
+                                <div class="col-sm-3">Billing Cycles</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-3"></div>

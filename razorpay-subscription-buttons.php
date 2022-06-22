@@ -4,7 +4,7 @@
  * Plugin Name: Razorpay Subscription Button Elementor
  * Plugin URI:  https://github.com/razorpay/subscription-button-elementor-plugin
  * Description: Razorpay Subscription Button Elementor
- * Version:     1.0.2
+ * Version:     1.0.3
  * Author:      Razorpay
  * Author URI:  https://razorpay.com
  */
@@ -102,7 +102,7 @@ if (!class_exists('RZP_Subscription_Button_Elementor_Loader'))
             }
 
             wp_die('<div class="error notice">
-                        <p>RAZORPAY ERROR: Subscription button fetch failed.</p>
+                        <p>RAZORPAY ERROR: Please set Razorpay Key Id and Secret in plugin settings.</p>
                      </div>'); 
         } 
 

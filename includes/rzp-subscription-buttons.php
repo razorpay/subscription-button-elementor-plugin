@@ -131,7 +131,7 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table
 
     function column_title($item) 
     {
-        $paged = (isset(($_REQUEST['paged'])) ? sanitize_text_field($_REQUEST['paged']):1);
+        $paged = (isset($_REQUEST['paged']) ? sanitize_text_field($_REQUEST['paged']):1);
 
         $actions = array(
             'view'      => sprintf('<a href="?page=%s&btn=%s&paged=%s">View</a>','rzp_button_view_sub_elementor', $item['id'],$paged),
@@ -158,7 +158,7 @@ class RZP_Subscription_Buttons_Elementor extends WP_List_Table
         }
 
         //Retrieve $customvar for use in query to get items.
-        $customvar = (isset(($_REQUEST['status'])) ? sanitize_text_field($_REQUEST['status']) : '');
+        $customvar = (isset($_REQUEST['status']) ? sanitize_text_field($_REQUEST['status']) : '');
 
         $payment_page = $this->get_items($customvar, $per_page);
         $count = count($payment_page);

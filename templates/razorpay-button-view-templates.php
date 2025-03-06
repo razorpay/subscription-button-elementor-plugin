@@ -29,40 +29,38 @@ class RZP_View_Subs_Button_Elementor_Templates
         $pagenum = sanitize_text_field($_REQUEST['paged']);
         $previous_page_url = admin_url('admin.php?page=razorpay_subs_button_elementor&paged='.$pagenum);
         $button_detail = $this->fetch_button_detail(sanitize_text_field($_REQUEST['btn']));
-        
-        $show = "jQuery('.overlay').show()";
-        $hide = "jQuery('.overlay').hide()";
+
         echo '<div class="wrap">
             <div class="content-header">
-                <a href="'.$previous_page_url.'">
+                <a href="'. esc_url($previous_page_url) .'">
                     <span class="dashicons rzp-dashicons dashicons-arrow-left-alt"></span> Button List
                 </a>
-                <span class="dashicons rzp-dashicons dashicons-arrow-right-alt2"></span>'.$button_detail['title'].'
+                <span class="dashicons rzp-dashicons dashicons-arrow-right-alt2"></span>'. esc_html($button_detail['title']) .'
             </div>
             <div class="container rzp-container">
                 <div class="row panel-heading">
-                    <div class="text">'.$button_detail['title'].'</div>
+                    <div class="text">'. esc_html($button_detail['title']) .'</div>
                 </div>
                 <div class="row panel-body">
                     <div class="col-md-5 panel-body-left">
                         <div class="row">
                             <div class="col-sm-4 panel-label">Button ID</div>
-                            <div class="col-sm-8 panel-value">'.$button_detail["id"].'</div>
+                            <div class="col-sm-8 panel-value">'. esc_html($button_detail["id"]) .'</div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 panel-label">Button Status</div>
                             <div class="col-sm-8 panel-value">
-                                <span class="status-label">'.$button_detail['status'].'</span>
-                                <button onclick="'.$show.'" class="status-button">'.$button_detail['btn_pointer_status'].'</button>
+                                <span class="status-label">'. esc_html($button_detail['status']) .'</span>
+                                <button onclick="jQuery(\'.overlay\').show()" class="status-button">'. esc_html($button_detail['btn_pointer_status']) .'</button>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 panel-label">Total Quantity Sold</div>
-                            <div class="col-sm-8 panel-value">'.$button_detail['total_item_sold'].'</div>
+                            <div class="col-sm-8 panel-value">'. esc_html($button_detail['total_item_sold']) .'</div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 panel-label">Created on</div>
-                            <div class="col-sm-8 panel-value">'.$button_detail['created_at'].'</div>
+                            <div class="col-sm-8 panel-value">'. esc_html($button_detail['created_at']) .'</div>
                         </div>
                     </div>
                     <div class="col-md-7"><b>Subscription Plans</b>'.$button_detail['html_content_item'].'</div>
@@ -74,16 +72,16 @@ class RZP_View_Subs_Button_Elementor_Templates
   <form class="modal-content" action="'.esc_url( admin_url('admin-post.php') ).'" method="POST">
     <div class="container">
         <div class="modal-header">
-            <h3 class="modal-title">'.$button_detail["modal_title_content"].'</h3>
+            <h3 class="modal-title">'. esc_html($button_detail["modal_title_content"]) .'</h3>
         </div>  
         <div class="modal-body">
             <div class="text-semi-muted">
-                <p>'.$button_detail["modal_body_content"].'</p>
+                <p>'. esc_html($button_detail["modal_body_content"]) .'</p>
             </div>
             <div class="Modal__actions">
-                <button type="button" onclick="'.$hide.'" class="btn btn-default">No, don`t!</button>
-                <button type="submit" onclick="'.$hide.'" name="btn_action" value="'.$button_detail['btn_pointer_status'].'" class="btn btn-primary">Yes, '.$button_detail['btn_pointer_status'].'</button>
-                <input type="hidden" name="btn_id" value="'.$button_detail['id'].'">
+                <button type="button" onclick="jQuery(\'.overlay\').hide()" class="btn btn-default">No, don`t!</button>
+                <button type="submit" onclick="jQuery(\'.overlay\').hide()" name="btn_action" value="'. esc_attr($button_detail['btn_pointer_status']) .'" class="btn btn-primary">Yes, '. esc_html($button_detail['btn_pointer_status']) .'</button>
+                <input type="hidden" name="btn_id" value="'. esc_attr($button_detail['id']) .'">
                 <input type="hidden" name="paged" value="'.$pagenum.'">
                 <input type="hidden" name="action" value="rzp_subs_btn_elementor_action">
             </div>

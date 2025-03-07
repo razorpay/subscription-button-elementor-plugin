@@ -203,7 +203,7 @@ class RazorpayElementsSubscriptionButton extends Widget_Base
         <# if (settings.select_button === 'select') { #>
             <div class="elementor-counter-title">Please select subscription button.</div>
         <# } else { #>
-            <img src=" <?php echo plugin_dir_url(__FILE__).'../public/image/elementorSVG.svg';?>" alt="Razorpay" >
+            <img src=" <?php echo esc_url(plugin_dir_url(__FILE__).'../public/image/elementorSVG.svg');?>" alt="Razorpay" >
         <# } #>
         <?php
     }
